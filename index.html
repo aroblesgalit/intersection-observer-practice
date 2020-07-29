@@ -15,12 +15,12 @@
     <section class="content">
 
         <div class="left">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/yellow.jpg" alt="yellow" class="yellow">
-            <p>I have no clue what I'm doing here LOL!</p>
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/squiggly.svg" alt="squig" class="squig">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/yellow.jpg" alt="yellow" class="yellow anim" data-delay="0s">
+            <p class="anim" data-delay="0.5s">I have no clue what I'm doing here LOL!</p>
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/2621168/squiggly.svg" alt="squig" class="squig anim" data-delay="0.7s">
         </div>
         <div class="right">
-            <div>
+            <div class="anim" data-delay="1s">
                 <h2>Get Yellow</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, similique in minus asperiores sed,
                     sapiente tenetur quia consectetur, vero provident veniam! Est facere veniam dolore magni ab aliquid,
@@ -29,6 +29,26 @@
         </div>
 
     </section>
+
+    <script>
+
+        const images = document.querySelectorAll(".anim");
+
+        observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0) {
+                    entry.target.style.animation = `anim1 2s ${entry.target.dataset.delay} forwards ease-out`;
+                } else {
+                    entry.target.style.animation = "none";
+                }
+            })
+        });
+        
+        images.forEach(image => {
+            observer.observe(image)
+        })
+
+    </script>
 </body>
 
 </html>

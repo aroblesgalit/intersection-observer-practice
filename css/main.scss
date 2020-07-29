@@ -35,9 +35,13 @@ section {
         }
     }
 
+    .anim {
+        opacity: 0;
+    }
+
     .yellow {
         width: 50%;
-        // opacity: 0;
+        opacity: 0;
     }
 
     .squig {
@@ -61,4 +65,15 @@ section {
         }
     }
 
+}
+
+@keyframes anim1 {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
